@@ -134,7 +134,7 @@ input::-webkit-inner-spin-button {
 
 <label>Save map<label><br>
 <button id="ignore" onclick="exportSvg()"><a id="svg_anchor" href="#">SVG <i class="fa fa-download"></i></a></button>
-<button id="png_paragraph" onclick="exportPng()"><a id="png_anchor" href="#">PNH <i class="fa fa-download"></i></a></button>
+<button id="png_paragraph" onclick="exportPng()"><a id="png_anchor" href="#">PNJ <i class="fa fa-download"></i></a></button>
 
 <hr>
 
@@ -1035,18 +1035,19 @@ function exportPng() {
   let ctx = c.getContext("2d");
   let img = new Image();
   img.src = url;
-  //img.onload = function () {
+  img.onload = function () {
     ctx.drawImage(img, 0, 0);
     let url_png = c.toDataURL('image/png');
     document.getElementById("png_anchor").setAttribute("href", url_png);
     document.getElementById("png_anchor").setAttribute("download", "");
     document.getElementById("png_anchor").click();
+    document.getElementById("png_paragraph").disabled = true;
     document.getElementById("png_paragraph").setAttribute("onclick", "exportPng()");
     ctx.clearRect(0, 0, 3600, 1800);
     document.getElementById("map").setAttribute("width", "70%");
     document.getElementById("map").setAttribute("height", "100%");
     document.getElementById("canvas_div").innerHTML = ``;
-  //}
+  }
   for (_ of document.getElementsByTagName("line")) {
     _.setAttribute("style", "cursor: pointer;");
   }
