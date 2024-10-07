@@ -134,7 +134,7 @@ input::-webkit-inner-spin-button {
 
 <label>Save map<label><br>
 <button id="ignore" onclick="exportSvg()"><a id="svg_anchor" href="#">SVG <i class="fa fa-download"></i></a></button>
-<button id="png_paragraph" onclick="exportPng()"><a id="png_anchor" href="#">PNA <i class="fa fa-download"></i></a></button>
+<button id="png_paragraph" onclick="exportPng()"><a id="png_anchor">PNB <i class="fa fa-download"></i></a></button>
 
 <hr>
 
@@ -1025,7 +1025,7 @@ function exportPng() {
   document.getElementById("map").setAttribute("width", "100%");
   document.getElementById("map").setAttribute("height", "100%");
   document.getElementById("png_paragraph").setAttribute("onclick", "");
-  document.getElementById("png_anchor").setAttribute("href", "#");
+  //document.getElementById("png_anchor").setAttribute("href", "#");
   //document.getElementById("png_anchor").setAttribute("download", "");
   let svg = document.querySelector("svg");
   let as_text = new XMLSerializer().serializeToString(svg);
